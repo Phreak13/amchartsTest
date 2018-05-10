@@ -2,8 +2,11 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+
 const port = process.env.PORT || 3000;
-let app = require();
+let app = express();
+
+app.set('view engine', 'hbs');
 
 app.use((req, res, next) => {
     let now = new Date().toString();
@@ -17,13 +20,12 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.static(__dirname + './public'));
+app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/node_modules/amcharts3/amcharts'));
 
-
-
-
-
-
+app.get('/', (req, res) => {
+    res.render('home.hbs');
+});
 
 
 
