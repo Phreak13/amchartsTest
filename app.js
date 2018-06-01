@@ -1,12 +1,29 @@
+require('./config/config');
+
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+
+const {mongoose} = require('./server/mongoose');
+const {InsertCountries} = require('./db/InsertData');
+const {Daten} = require('./models/daten');
 
 
 const port = process.env.PORT || 3000;
 let app = express();
 
 app.set('view engine', 'hbs');
+InsertCountries();
+
+app.get('/data.json', (req, res) => {
+    Daten.find().then((countries) => { 
+    res.send(countries);
+    
+}, (e) => {
+    res.status(400).send(e);
+})
+});
+
 
 app.use((req, res, next) => {
     let now = new Date().toString();
