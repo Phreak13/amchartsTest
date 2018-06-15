@@ -6,15 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Javascript Chart</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="scripts/libs/jquery-3.3.1.min.js"></script>
     <script src="amcharts.js"></script>
+    <script src="/socket.io/socket.io.js"></script> <!--socket muss vor dem main.js-script geladen werden in dem socket = io() defeniert wird-->
     <script src="serial.js"></script>
-    <script src="scripts/main.js"></script>
     <script src="plugins/dataloader/dataloader.min.js" type="text/javascript"></script>
+    <script src="scripts/main.js"></script>
 </head>
 <body>
     <header>Javascript Chart</header>
     <div id="chartdiv" style="width: 640px; height: 400px;"></div>
-    
+
+    <div>
+        <form id="chart-input">
+            <input type="text" name="country" placeholder="Country" autocomplete="off">
+            <input type="number" name="visits" placeholder="Visits" autocomplete="off"> 
+            <button>Send</button>
+        </form>
+    </div>
+
+
+
 </body>
 </html>
 
